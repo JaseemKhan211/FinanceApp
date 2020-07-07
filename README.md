@@ -1,4 +1,4 @@
-### FinanceApp
+# FinanceApp
 The FinanceApp my Web Developement Course Assignment.
 
 ### Important
