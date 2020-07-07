@@ -8,8 +8,8 @@ FinanceApp first user sign Up Income/Exense store the second user Sign-Up Income
 Finance App use this mothed FinanceApp the two Transactions first Income like project-salery-vc Income / second Exense like bills-clothong-ration srote in this App.
 
 ### Bulid With
--Advanced Javascript ES6
--Firebase - authentication
--Firestore Cloud - Database
--Jquery
--Bootstrap-4
+- Advanced Javascript ES6
+- Firebase - authentication
+- Firestore Cloud - Database
+- Jquery
+- Bootstrap-4
