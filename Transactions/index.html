@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html>
+  
+  <head>
+    
+    <title>Transactions</title>
+   
+    <!-- Bootstrap -->
+    <link 
+    rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
+    crossorigin="anonymous">
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <!--   fonts link -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+
+    <!-- css link -->
+    <link href="./style.css" type="text/css" rel="stylesheet" />
+
+	</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+      <h4>FinanceApp</h4>
+      <div class="padding"> Welcome to <span id="user"></span> </div>
+      <img class="padding" width="30" src="https://i.ya-webdesign.com/images/avatar-png-1.png" />
+      <p class="padding"> Logout </p>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters">
+      <div class="padding">
+        <h6>Select Month</h6>
+        <select id="month">
+            <option value="0">Jan</option>
+            <option value="1">Feb</option>
+            <option value="2">Mar</option>
+            <option value="3">Apr</option>
+            <option value="4">May</option>
+            <option value="5">Jun</option>
+            <option value="6">Jul</option>
+        </select>
+      </div>
+      <div class="padding">
+        <h6>Select Year</h6>
+        <select id="year">
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+        </select>
+      </div>
+      <div class="padding">
+        <h6>Select Transaction</h6>
+        <select id="type-filter">
+          <option value="all">All</option>
+          <option value="income">Incomes</option>
+          <option value="expense">Expenses</option>
+        </select>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="filter()">Filter</button>
+    </div>
+
+    <!-- Transactions -->
+    <div class="transactions">
+      <div class="transactions-header">
+        <div>
+          <h3>Transactions</h3>
+        </div>
+        <div>
+          <p class="padding-1" data-toggle="modal" data-target="#incomeModal">+ Income</p>
+          <p class="padding-1" data-toggle="modal" data-target="#expenseModal">+ Expense</p>
+        </div>
+      </div>
+      <div>
+        
+        <!-- table  -->
+        <table id="transactions-table" class="table">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Amount</th>
+              <th>Category</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+ 
+    </div>
+
+  
+ 
+
+    <!-- Income Modal -->
+    <div class="modal fade" id="incomeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Income</h5>
+          </div>
+            <div class="modal-body">
+              <!-- Amount -->
+              <div class="form-group">
+                <label for="Amount">Amount</label>
+                <input type="amount" class="form-control" id="amount">
+              </div>
+              <!-- Category -->
+              <div class="form-group">
+                <label for="Category">Category</label>
+                <select class="form-control" id="category">
+                  <option value="Salery-Income">Salery Income</option>
+                  <option value="Project-Income">Project Income</option>
+                  <option value="VC-Income">VC Income</option>
+                </select>
+              </div>
+               <!-- Receiving Date -->
+              <div class="form-group">
+                <label for="date">Receiving Date</label>
+                <input type="date" class="form-control" id="date">
+              </div>
+              <!-- Description -->
+              <div class="form-group">
+                <label for="Description">Description</label>
+                <input type="Description" class="form-control" id="description">
+              </div>
+            </div>
+            
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="saveIncome()">Save changes</button>
+          </div>
+      </div>
+    </div>
+    </div>
+    
+    <!-- Expense Modal -->
+    <div class="modal fade" id="expenseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Expense</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <div class="modal-body">
+              
+            <!-- Amount -->
+              <div class="form-group">
+                  <label for="Amount-expense">Amount</label>
+                  <input type="amount" class="form-control" id="amount-expense">
+              </div>
+              
+            <!-- Category -->
+              <div class="form-group">
+                  <label for="Category-expense">Category</label>
+                    <select class="form-control" id="category-expense">
+                        <option value="bills">Bills</option>
+                        <option value="rashan">Rashan</option>
+                        <option value="clothing">Clothing</option>
+                    </select>
+              </div>
+            
+              <!-- Receiving Date -->
+                <div class="form-group">
+                    <label for="date-expense">Receiving Date</label>
+                    <input type="date" class="form-control" id="date-expense">
+            </div>
+                          
+              <!-- Description -->
+                <div class="form-group">
+                    <label for="Description-expense">Description</label>
+                    <input type="Description" class="form-control" id="description-expense">
+                </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="saveExpense()">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- firebase link -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+  <!-- firebase auth cdn link -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+  <!-- firestore link -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBhwJcx9Jx0cqDVxtswGOdGS8ZW8txisLk",
+    authDomain: "finance-app-e0475.firebaseapp.com",
+    databaseURL: "https://finance-app-e0475.firebaseio.com",
+    projectId: "finance-app-e0475",
+    storageBucket: "finance-app-e0475.appspot.com",
+    messagingSenderId: "411200016506",
+    appId: "1:411200016506:web:acd520381f56b0b39d6bc3"
+  };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  
+  <!-- javascript link -->
+  <script src="./app.js"></script>
+
+</body>
+
+</html>

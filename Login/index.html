@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- css link -->
+    <link href="./style.css" type="text/css" rel="stylesheet" />
+    
+    <!--   fonts link -->
+    <link 
+    href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" 
+    rel="stylesheet">
+    
+    <title>Login Form</title>
+
+  </head>
+
+<body>
+    
+    <!-- Login -->
+    
+    <div class="main-div">
+        <h3>FinanceApp Login</h3>
+        <input type="email" placeholder="Email..." id="email_id"/>
+        <input type="password" placeholder="Password..." id="password_id"/>
+        <button onclick="login()">Login to Account</button>
+        
+        <!-- sign Up link -->
+        <a href="../Sign Up/index.html">Don't have an account? <br /> Sign Up!</a>
+    
+    </div>
+
+  <!-- firebase link -->
+  
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+  
+  <!-- firebase auth cdn link -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+  
+  <!-- firestore link -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script>
+  
+  // Your web app's Firebase configuration
+    
+  var firebaseConfig = 
+  {
+    apiKey: "AIzaSyBhwJcx9Jx0cqDVxtswGOdGS8ZW8txisLk",
+    authDomain: "finance-app-e0475.firebaseapp.com",
+    databaseURL: "https://finance-app-e0475.firebaseio.com",
+    projectId: "finance-app-e0475",
+    storageBucket: "finance-app-e0475.appspot.com",
+    messagingSenderId: "411200016506",
+    appId: "1:411200016506:web:acd520381f56b0b39d6bc3"
+  };
+    
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  
+  </script>
+  
+  <!-- javascript link -->
+  <script src="./app.js"></script>
+
+  <!-- sweet alert -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</body>
+</html>
