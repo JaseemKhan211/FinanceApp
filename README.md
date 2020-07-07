@@ -1,13 +1,13 @@
 ### FinanceApp
 The FinanceApp my Web Developement Course Assignment.
 
-Important
+### Important
 FinanceApp first user sign Up Income/Exense store the second user Sign-Up Income/Expense different store the first user second user Income/Expense table not show second user not table show first user.   
 
-How to Use
+### How to Use
 Finance App use this mothed FinanceApp the two Transactions first Income like project-salery-vc Income / second Exense like bills-clothong-ration srote in this App.
 
-Bulid With
+### Bulid With
 -Advanced Javascript ES6
 -Firebase - authentication
 -Firestore Cloud - Database
