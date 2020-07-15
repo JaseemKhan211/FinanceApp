@@ -1,5 +1,5 @@
 # FinanceApp
-The FinanceApp my Web Developement Course Assignment.
+The FinanceApp my Web developement Course Assignment.
 
 ### Bulid With
 - Advanced Javascript ES6
